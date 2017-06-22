@@ -18,6 +18,7 @@
 
 <header class="caption">
     <h1>Известия</h1>
+    <p>Авторы: Ирина Миторофанова и Михаил Шатихин</p>
     <p>
         <script>
             document.write(new Date(2017, 5, 22));
@@ -25,16 +26,111 @@
     </p>
 </header>
 
-<section class="slide" id="cover">
+<style>
+    .svg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .svg--rays {
+        width: 100%;
+        height: 100%;
+    }
+
+    .svg--bird {
+        top: -60px;
+        left: -30px;
+        width: 280px;
+        height: 350px;
+        /* mix-blend-mode: difference */
+    }
+
+    .c-rays {
+        fill: none;
+        stroke: black;
+        stroke-width: 100%;
+        stroke-dasharray: 7%;
+        -webkit-animation: rotate 20s linear infinite;
+        animation: rotate 20s linear infinite;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+
+    @-webkit-keyframes rotate {
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes rotate {
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    .svg--bird {
+        -webkit-animation: up-down 1.68s infinite ease-out;
+        animation: up-down 1.68s infinite ease-out;
+    }
+
+    @-webkit-keyframes up-down {
+        50% {
+            -webkit-transform: translate(0, 30px);
+            transform: translate(0, 30px);
+        }
+    }
+
+    @keyframes up-down {
+        50% {
+            -webkit-transform: translate(0, 30px);
+            transform: translate(0, 30px);
+        }
+    }
+
+</style>
+
+<section class="slide white" id="cover">
     <h2 class="shout">
         <span style="letter-spacing: 12px; color: #fff; text-shadow: 0 2px 4px #666">
             <span style="position: relative; top: -5px;">Ле</span>ту<span
                 style="position: relative; top: 5px">чка</span>
         </span>
     </h2>
+    <svg class="svg svg--bird" viewBox="0 0 280 450">
+        <defs>
+            <mask id="mask" maskunits="userSpaceOnUse"
+                  maskcontentunits="userSpaceOnUse">
+                <image xlink:href="pictures/bird.gif"
+                       width="277" height="293"></image>
+            </mask>
+
+            <filter id="drop-shadow">
+                <feGaussianBlur stdDeviation="5" in="SourceAlpha"/>
+                <feOffset dx="4" dy="140" result="offsetblur"/>
+                <feFlood flood-color="#999"/>
+                <feComposite operator="in" in2="offsetblur"/>
+                <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+
+        <g filter="url(#drop-shadow)">
+            <g mask="url(#mask)">
+                <circle r="50%" cx="60%" cy="35%" class="c-rays"></circle>
+            </g>
+        </g>
+    </svg>
 </section>
 
-<section class="slide">
+<section class="slide white">
     <h2>
         Про браузеры
     </h2>
@@ -43,22 +139,31 @@
             <a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/changelog/desktop/16215/">
                 Edge build 16215
             </a>
+            <ul>
+                <li>Sticky, object-fit, Full screen mode</li>
+            </ul>
         </li>
         <li>
             <a href="https://webkit.org/blog/7627/safari-technology-preview-32/">
                 Safari TP 33
             </a>
+            <ul>
+                <li>WebRTC, WebAssembly, Auto-Play Improvements</li>
+            </ul>
         </li>
         <li>
             <a href="https://developer.mozilla.org/en-US/Firefox/Releases/55">
-                Firefox 55
+                Firefox 55 for Developers
             </a>
+            <ul>
+                <li>Background Tasks API, WebVR 1.1 API, WebRTC</li>
+            </ul>
         </li>
     </ul>
 </section>
 
 
-<section class="slide">
+<section class="slide white">
     <h2>
         SVG Маски
     </h2>
@@ -75,21 +180,22 @@
     </ul>
 </section>
 
-<section class="slide">
+<section class="slide white">
     <h2>
-        70% Repetition in Style Sheets
+        CSS Stats
     </h2>
-    <img src="pictures/dontrepeatyourself_motivator_2.jpg" width="400"/>
+    <img src="pictures/cssstats.png" height="300"/>
     <ul>
         <li>
-            <a href="https://meiert.com/en/blog/20170531/70-percent-css-repetition/">
+            <a target='_blank'
+               href="http://cssstats.com/">
                 Читать
             </a>
         </li>
     </ul>
 </section>
 
-<section class="slide">
+<section class="slide white">
     <h2>
         Обнови<span style="position: relative;top:5px;">лося</span>
     </h2>
@@ -138,14 +244,8 @@
     <ul>
         <li>
             <a target='_blank'
-               href="http://cssstats.com/">
-                CSS Stats
-            </a>
-        </li>
-        <li>
-            <a target='_blank'
                href="http://www.emojicode.org/">
-                Emojicode
+                🏁 🍇 Emojicode 🍉
             </a>
         </li>
         <li>
@@ -169,20 +269,10 @@
         <li>
             <a target='_blank'
                href="https://github.com/cavinsmith/bdsm.js/">
-                BDSM.js  🍑🍌
+                BDSM.js 🍑🍌
             </a>
         </li>
     </ul>
-</section>
-
-<section class="slide white">
-    <h2 class="">Авторы</h2>
-    <div>
-        Ирина Митрофанова
-    </div>
-    <div>
-        Михаил Шатихин
-    </div>
 </section>
 
 <!--
